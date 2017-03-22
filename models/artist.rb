@@ -47,7 +47,7 @@ class Artist
   def albums()
     sql = "SELECT * FROM albums WHERE artist_id = #{@id}"
     result = SqlRunner.run(sql)
-    result = result.map{|album| PizzaOrder.new(album)}
+    result = result.map{|album| Album.new(album)}
     return result
   end
 
