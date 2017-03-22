@@ -17,7 +17,7 @@ class Album
   def self.all()
     sql = "SELECT * FROM albums"
     result = SqlRunner.run(sql)
-    albums = result.map{|album| PizzaOrder.new(album)}
+    albums = result.map{|album| Album.new(album)}
     return albums
   end
 
@@ -47,7 +47,7 @@ class Album
   end
 
   def artist()
-    sql = "SELECT * FROM artists WHERE id = #{@customer_id}"
+    sql = "SELECT * FROM artists WHERE id = #{@artist_id}"
     result = SqlRunner.run(sql)
     return Artist.new(result.first)
   end

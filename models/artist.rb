@@ -8,13 +8,13 @@ class Artist
 
   def initialize(options)
     @id = options['id'].to_i
-    @name
+    @name = options['name']
   end
 
   def self.all()
     sql = "SELECT * FROM artists"
     result = SqlRunner.run(sql)
-    artists = result.map{|artist| Customer.new(artist)}
+    artists = result.map{|artist| Artist.new(artist)}
     return artists
   end
 
