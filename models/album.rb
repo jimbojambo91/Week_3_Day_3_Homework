@@ -26,6 +26,13 @@ class Album
     SqlRunner.run(sql)  
   end
 
+  def self.find_by_id(id)
+    sql = "SELECT * FROM albums WHERE id = #{id}"
+    result = SqlRunner.run(sql)
+    result.map{|album| Artist.new(album)}
+    return result.first
+  end
+
   def save()
     sql = "INSERT INTO albums (title, genre, artist_id)
      VALUES ('#{@title}', '#{@genre}', #{@artist_id}) 
